@@ -1,0 +1,162 @@
+
+<!-- saved from url=(0046)https://www.shodor.org/stella2java/rgbint.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>RGB Int Calculator</title>
+	<script type="text/javascript">
+<!--
+function getkey(e)
+{
+if (window.event)
+   return window.event.keyCode;
+else if (e)
+   return e.which;
+else
+   return null;
+}
+//-->
+</script>
+<script type="text/javascript">
+<!--
+function goodchars(e, goods)
+{
+var key, keychar;
+key = getkey(e);
+if (key == null) return true;
+
+// get character
+keychar = String.fromCharCode(key);
+keychar = keychar.toLowerCase();
+goods = goods.toLowerCase();
+
+// check goodkeys
+if (goods.indexOf(keychar) != -1)
+	return key;
+	
+//do not accept returns.	
+if (key==13) return false;
+
+// control keys
+if ( key==null || key==0 || key==8 || key==9 ||  key==27 )
+   return key;
+
+// else return false
+return false;
+}
+//-->
+</script>
+	
+<script language="JavaScript">
+window.name="gcwindow"
+</script></head>
+
+
+<body bgcolor="white" color="#FFFFFF" link="#663300" alink="#CC0000" vlink="#CC0000">
+<center>
+<h3>RGB İnt Kodlarını Hesaplamak</h3>
+</center>
+
+</p><center>
+<form>
+<h3>Renk Kodları</h3>
+<table border="" cellpadding="2">
+<tbody><tr>
+<td>
+Red =</td>
+<td>
+<input type="TEXT" name="red" value="255" onkeypress="return goodchars(event,&#39;0123456789+-e.&#39;)" size="25">
+(0-255)</td>
+</tr>
+<tr>
+<td>
+Green = </td>
+<td>
+<input type="text" name="green" value="255" size="25" onkeypress="return goodchars(event,&#39;0123456789+-e.&#39;)">
+(0-255)</td>
+</tr>
+<tr>
+<td>
+Blue = </td>
+<td>
+<input type="text" name="blue" value="255" size="25" onkeypress="return goodchars(event,&#39;0123456789+-e.&#39;)">
+(0-255)</td>
+</tr>
+</tbody></table><h3>Sonuçlar</h3>
+<table border="" cellpadding="2">
+<tbody><tr>
+<td>
+İnt Kodu = </td>
+<td>
+<input type="text" name="rgbint" size="25" onkeypress="return false">
+</td></tr>
+<tr>
+<td>
+Hex Kodu = </td>
+<td>
+<input type="text" name="rgbhex" size="25" onkeypress="return false">
+</td></tr>
+</tbody></table><p>
+</p><table border="" cellpadding="2">
+</table><table border="5" cellpadding="2">
+<tbody><tr><td><input type="reset" name="res" value="Değerleri Sıfırla"></td>
+<td><input type="button" name="eval" value="Hesapla" onclick="
+{
+var red=parseInt(this.form.red.value)
+var green=parseInt(this.form.green.value)
+var blue=parseInt(this.form.blue.value)
+this.form.rgbint.value=256*256*red+256*green+blue
+this.form.rgbhex.value=tohex(red)+tohex(green)+tohex(blue)
+document.bgColor=tohex(red)+tohex(green)+tohex(blue)
+
+function tohex (n) {
+   var retval=&#39;&#39;;
+   if (n&lt;=0) {
+      retval=&#39;00&#39;;
+      return retval;
+   }
+   var nt=n;
+   while (n&gt;0) {
+      var m=n;
+      n=m&gt;&gt;4;
+      m=m%16;
+      var string=&#39;&#39;;
+      if (m&lt;10) string=&#39;&#39;+m; else {
+         switch (m) {
+            case 10:
+            default:
+               string=&#39;A&#39;
+            break;
+            
+            case 11:
+               string=&#39;B&#39;
+            break;
+            
+            case 12:
+               string=&#39;C&#39;
+            break;
+            
+            case 13:
+               string=&#39;D&#39;
+            break;
+            
+            case 14:
+               string=&#39;E&#39;
+            break;
+            
+            case 15:
+               string=&#39;F&#39;
+            break;
+         }
+      }
+      retval=string+retval;
+   }
+   if (nt&lt;16) retval=&#39;0&#39;+retval;
+   return retval;
+}
+}"> </td></tr></tbody></table><p>
+</p></form>
+</center><br>
+
+
+
+
+</body></html>
